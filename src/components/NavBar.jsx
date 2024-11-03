@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import NavButton from "./NavButton";
 
 export default function NavBar(props) {
-  const [CurrentButton, setCurrentButton] = useState(0);
-
   const numbers = [0, 1, 2, 3, 4];
   const buttonList = numbers.map((number) => (
     <NavButton
       key={number.toString()}
       index={number}
-      onClick={() => setCurrentButton(number)}
-      active={CurrentButton === number ? true : false}
+      onClick={() => props.navigateFunc(number)}
+      active={props.curNumber === number ? true : false}
     ></NavButton>
   ));
 
