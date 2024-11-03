@@ -10,4 +10,9 @@ export default [
   pluginJs.configs.recommended,
   pluginReact.configs.flat.recommended,
   eslintConfigPrettier,
+  {
+    rules: {
+      "react/prop-types": "off",
+    },
+  },
 ];
