@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function NavButton(props) {
-  const isActiveColour = props.active ? "bg-red-400" : "bg-red-200";
+  const isActiveColour = props.active ? "bg-red-400" : "bg-red-300";
 
   return (
     <div

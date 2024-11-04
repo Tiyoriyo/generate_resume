@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import Count from "./Count";
 
-export default function Container(props) {
+export default function Container() {
   const [CurrentSection, setCurrentSection] = useState(0);
 
   return (
