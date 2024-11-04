@@ -4,6 +4,7 @@ export default function InputSetup() {
   const [Verified, setVerified] = useState(false);
   const [InputText, setInputText] = useState(undefined);
   const [VerifiedText, setVerifiedText] = useState(undefined);
+  const [ErrorSubmit, setErrorSubmit] = useState(false);
 
   const TextInput = useRef(null);
 
@@ -19,6 +20,8 @@ export default function InputSetup() {
     if (!Verified && InputText) {
       setVerified(true);
       TextInput.current.disabled = true;
+    } else {
+      setErrorSubmit(true);
     }
   }
 
@@ -30,7 +33,7 @@ export default function InputSetup() {
   return (
     <div>
       {/* Inputfield */}
-      <div className="flex flex-col gap-4">
+      <div className="w-42 flex flex-col gap-4">
         <label>input</label>
         <input
           type="text"
@@ -58,11 +61,16 @@ export default function InputSetup() {
             </button>
           )}
         </div>
+        {ErrorSubmit && (
+          <p className="w-42 text-wrap text-xs text-red-600">
+            You need to actually input something you fool
+          </p>
+        )}
       </div>
-      {/* Debug Verified Text */}
-      <p>{vText}</p>
-      {/* Debug Submitted Text */}
-      <p>{VerifiedText}</p>
+
+      {/* <p>{vText}</p>
+
+      <p>{VerifiedText}</p> */}
     </div>
   );
 }
