@@ -3,8 +3,6 @@ import React from "react";
 export default function NavButton(props) {
   const isActiveColour = props.active ? "bg-red-400" : "bg-red-300";
 
-  console.log(props.active);
-
   return (
     <div className="flex w-24 flex-col items-center">
       <div
