@@ -8,8 +8,6 @@ export default function InputSetup() {
 
   const TextInput = useRef(null);
 
-  const vText = Verified ? "Verified" : "Not Verified";
-
   function handleChange(e) {
     setInputText(e.target.value);
   }
@@ -62,16 +60,13 @@ export default function InputSetup() {
             </button>
           )}
         </div>
+        {/* Error Handler */}
         {ErrorSubmit && (
           <p className="w-42 text-xs text-red-600">
             You need to actually input something you fool
           </p>
         )}
       </div>
-
-      {/* <p>{vText}</p>
-
-      <p>{VerifiedText}</p> */}
     </div>
   );
 }

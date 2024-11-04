@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
-import Count from "./Count";
+import InputSetup from "./InputSetup";
 
 export default function Container() {
   const [CurrentSection, setCurrentSection] = useState(0);
 
   return (
     <div className="flex flex-col items-center justify-center gap-4 border p-8 shadow-md">
-      <Count curNumber={CurrentSection}></Count>
+      <InputSetup></InputSetup>
       <NavBar
         curNumber={CurrentSection}
         navigateFunc={setCurrentSection}

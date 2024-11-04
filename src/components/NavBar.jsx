@@ -12,5 +12,9 @@ export default function NavBar(props) {
     ></NavButton>
   ));
 
-  return <div className="flex gap-4">{buttonList}</div>;
+  return (
+    <div className="flex w-full justify-center gap-4 border-x">
+      {buttonList}
+    </div>
+  );
 }

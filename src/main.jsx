@@ -8,6 +8,5 @@ import InputSetup from "./components/InputSetup";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Container></Container>
-    <InputSetup></InputSetup>
   </StrictMode>,
 );
