@@ -9,11 +9,14 @@ export default function InputSetup(props) {
   const keyArrayList = Object.keys(Fields).map((key) => key);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex w-full flex-col">
       {keyArrayList.map((field) => (
-        <div className="flex w-max flex-col" key={field}>
+        <div className="flex w-full flex-col" key={field}>
           <label>{Fields[field].label}</label>
-          <input type={Fields[field].type} className="border"></input>
+          <input
+            type={Fields[field].type}
+            className="h-8 border shadow-sm"
+          ></input>
         </div>
       ))}
     </div>

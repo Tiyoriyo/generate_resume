@@ -14,7 +14,7 @@ export default function Container() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 border p-8 shadow-md">
+    <div className="flex flex-col items-start justify-center gap-4 border p-8 shadow-md">
       <InputSetup section={sections[CurrentSection]}></InputSetup>
       <NavBar
         curNumber={CurrentSection}
