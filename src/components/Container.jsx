@@ -9,7 +9,7 @@ export default function Container() {
     "personalInformation",
     "professionalSummary",
     "workExperience",
-    "educationCertfications",
+    "educationCertifications",
     "skills",
   ];
 
