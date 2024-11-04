@@ -20,6 +20,7 @@ export default function InputSetup() {
     if (!Verified && InputText) {
       setVerified(true);
       TextInput.current.disabled = true;
+      setErrorSubmit(false);
     } else {
       setErrorSubmit(true);
     }
@@ -62,7 +63,7 @@ export default function InputSetup() {
           )}
         </div>
         {ErrorSubmit && (
-          <p className="w-42 text-wrap text-xs text-red-600">
+          <p className="w-42 text-xs text-red-600">
             You need to actually input something you fool
           </p>
         )}
