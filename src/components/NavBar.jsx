@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import NavButton from "./NavButton";
+import { inputStructure } from "../assets/inputStructure";
 
 export default function NavBar(props) {
   const numbers = [0, 1, 2, 3, 4];
 
-  const sections = [
+  const rawSections = [
     "personalInformation",
     "professionalSummary",
     "workExperience",
-    "educationCertfications",
+    "educationCertifications",
     "skills",
   ];
+
+  const sections = rawSections.map((section) => inputStructure[section].title);
 
   const buttonList = numbers.map((number) => (
     <NavButton
       title={sections[number]}
-      key={sections[number]}
+      key={rawSections[number]}
       index={number}
       onClick={() => props.navigateFunc(number)}
       active={props.curNumber === number ? true : false}

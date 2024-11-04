@@ -1,61 +1,99 @@
-export const Structure = {
+export const inputStructure = {
   personalInformation: {
-    fullName: "Vadim Kostrov",
-    professionalTitle: "Software Developer",
-    phoneNumber: "+1234567890",
-    email: "vadim@example.com",
-    linkedInProfile: "https://www.linkedin.com/in/vadimkostrov",
-    portfolio: "https://vadimportfolio.com",
+    title: "Personal Information",
+    fields: {
+      fullName: {
+        label: "Full Name",
+        type: "text",
+      },
+      professionalTitle: {
+        label: "Professional Title",
+        type: "text",
+      },
+      phoneNumber: {
+        label: "Phone Number",
+        type: "tel",
+      },
+      email: {
+        label: "Email Address",
+        type: "email",
+      },
+      linkedInProfile: {
+        label: "LinkedIn Profile",
+        type: "url",
+      },
+      portfolio: {
+        label: "Portfolio",
+        type: "url",
+      },
+    },
   },
   professionalSummary: {
-    summary:
-      "Passionate software developer with 3+ years of experience in web development, specializing in JavaScript and React, with a strong commitment to delivering high-quality solutions.",
+    title: "Professional Summary",
+    fields: {
+      summary: {
+        label: "Summary",
+        type: "textarea",
+      },
+    },
   },
-  workExperience: [
-    {
-      jobTitle: "Frontend Developer",
-      companyName: "Tech Solutions Inc.",
-      location: "New York, NY",
-      startDate: "2021-06",
-      endDate: "Present",
-      responsibilities: [
-        "Developed and maintained front-end features using React and Redux.",
-        "Collaborated with designers to enhance user experience across all web applications.",
-        "Improved load times by optimizing code and implementing lazy loading.",
-      ],
+  workExperience: {
+    title: "Work Experience",
+    fields: {
+      jobTitle: {
+        label: "Job Title",
+        type: "text",
+      },
+      companyName: {
+        label: "Company Name",
+        type: "text",
+      },
+      location: {
+        label: "Location",
+        type: "text",
+      },
+      startDate: {
+        label: "Start Date",
+        type: "date",
+      },
+      endDate: {
+        label: "End Date",
+        type: "date",
+      },
+      responsibilities: {
+        label: "Responsibilities / Achievements",
+        type: "textarea",
+      },
     },
-    {
-      jobTitle: "Junior Developer",
-      companyName: "Web Innovations",
-      location: "San Francisco, CA",
-      startDate: "2019-08",
-      endDate: "2021-05",
-      responsibilities: [
-        "Assisted in the development of e-commerce platforms using JavaScript and HTML/CSS.",
-        "Performed code reviews and collaborated with team members to ensure quality standards.",
-        "Enhanced site accessibility and mobile responsiveness.",
-      ],
+  },
+  educationCertifications: {
+    title: "Education & Certifications",
+    fields: {
+      degree: {
+        label: "Degree / Certification",
+        type: "text",
+      },
+      institution: {
+        label: "Institution / Issuer",
+        type: "text",
+      },
+      graduationDate: {
+        label: "Graduation / Issue Date",
+        type: "date",
+      },
+      achievements: {
+        label: "Achievements / Honors",
+        type: "textarea",
+      },
     },
-  ],
-  educationCertifications: [
-    {
-      degree: "Bachelor of Science in Computer Science",
-      institution: "University of California, Berkeley",
-      graduationDate: "2019-05",
-      achievements: "Graduated with Honors",
+  },
+  skills: {
+    title: "Skills",
+    fields: {
+      skill: {
+        label: "Skills",
+        type: "text",
+      },
     },
-    {
-      certification: "Certified ScrumMaster",
-      issuer: "Scrum Alliance",
-      issueDate: "2020-09",
-    },
-  ],
-  skills: [
-    "JavaScript",
-    "React",
-    "Redux",
-    "HTML/CSS",
-    "Git",
-    "Project Management",
-  ],
+  },
 };
