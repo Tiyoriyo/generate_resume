@@ -22,6 +22,11 @@ export default function InputSetup() {
     }
   }
 
+  function editBtnHandler() {
+    setVerified(false);
+    TextInput.current.disabled = false;
+  }
+
   return (
     <div>
       {/* Inputfield */}
@@ -33,14 +38,26 @@ export default function InputSetup() {
           onChange={handleChange}
           ref={TextInput}
         ></input>
-        <button
-          type="submit"
-          className="w-24 border bg-green-300"
-          onClick={confirmBtnHandler}
-          onSubmit={() => setVerifiedText(InputText)}
-        >
-          submit
-        </button>
+        <div>
+          {!Verified && (
+            <button
+              type="button"
+              className="w-24 border bg-green-300"
+              onClick={confirmBtnHandler}
+            >
+              submit
+            </button>
+          )}
+          {Verified && (
+            <button
+              type="button"
+              className="w-24 border bg-red-300"
+              onClick={editBtnHandler}
+            >
+              Edit
+            </button>
+          )}
+        </div>
       </div>
       {/* Debug Verified Text */}
       <p>{vText}</p>
