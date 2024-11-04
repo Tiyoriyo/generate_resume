@@ -13,6 +13,15 @@ export default function InputSetup() {
     setInputText(e.target.value);
   }
 
+  function confirmBtnHandler() {
+    setVerifiedText(InputText);
+    // Check if there is no existing field & if there is input text.
+    if (!Verified && InputText) {
+      setVerified(true);
+      TextInput.current.disabled = true;
+    }
+  }
+
   return (
     <div>
       {/* Inputfield */}
@@ -27,14 +36,7 @@ export default function InputSetup() {
         <button
           type="submit"
           className="w-24 border bg-green-300"
-          onClick={() => {
-            setVerifiedText(InputText);
-            TextInput.current.value = "";
-            if (!Verified && InputText) {
-              setVerified(true);
-              TextInput.current.disabled = true;
-            }
-          }}
+          onClick={confirmBtnHandler}
           onSubmit={() => setVerifiedText(InputText)}
         >
           submit
