@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import NavButton from "./NavButton";
 import { inputStructure } from "../assets/inputStructure";
 
