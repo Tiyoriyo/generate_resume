@@ -10,7 +10,7 @@ export default function NavButton(props) {
         onClick={props.onClick}
       ></div>
 
-      <p className="">Hey</p>
+      <p className="">{props.title}</p>
     </div>
   );
 }
