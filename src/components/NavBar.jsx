@@ -26,8 +26,12 @@ export default function NavBar(props) {
   ));
 
   return (
-    <div className="mt-auto flex w-full justify-center gap-4 border-x">
-      {buttonList}
+    <div className="mt-auto flex w-full flex-col justify-center gap-4">
+      <div className="flex border-x">{buttonList}</div>
+      <p className="font-mono text-xs font-extralight italic text-gray-400">
+        Click on the section circles if you want to go back to an earlier
+        section
+      </p>
     </div>
   );
 }
