@@ -14,8 +14,12 @@ export default function Container() {
   ];
 
   return (
-    <div className="flex flex-col items-start justify-center gap-4 border p-8 shadow-md">
-      <InputSetup section={sections[CurrentSection]}></InputSetup>
+    <div className="flex flex-col items-start justify-center gap-4">
+      <InputSetup
+        section={sections[CurrentSection]}
+        setSectionHandler={setCurrentSection}
+        sectionIndex={CurrentSection}
+      ></InputSetup>
       <NavBar
         curNumber={CurrentSection}
         navigateFunc={setCurrentSection}

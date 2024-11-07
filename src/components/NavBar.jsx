@@ -26,7 +26,7 @@ export default function NavBar(props) {
   ));
 
   return (
-    <div className="flex w-full justify-center gap-4 border-x">
+    <div className="mt-auto flex w-full justify-center gap-4 border-x">
       {buttonList}
     </div>
   );
