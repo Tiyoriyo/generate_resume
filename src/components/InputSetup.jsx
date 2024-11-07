@@ -2,75 +2,78 @@ import React, { useRef, useState } from "react";
 import { inputStructure } from "../assets/inputStructure";
 import { data } from "../assets/dataHolder";
 
-const initialState = {
-  personalInformation: {
-    fullName: {
-      value: undefined,
+function getDataSkeleton() {
+  return {
+    personalInformation: {
+      fullName: {
+        value: undefined,
+      },
+      professionalTitle: {
+        value: undefined,
+      },
+      phoneNumber: {
+        value: undefined,
+      },
+      email: {
+        value: undefined,
+      },
+      linkedInProfile: {
+        value: undefined,
+      },
+      portfolio: {
+        value: undefined,
+      },
     },
-    professionalTitle: {
-      value: undefined,
+    professionalSummary: {
+      summary: {
+        value: undefined,
+      },
     },
-    phoneNumber: {
-      value: undefined,
+    workExperience: {
+      jobTitle: {
+        value: undefined,
+      },
+      companyName: {
+        value: undefined,
+      },
+      location: {
+        value: undefined,
+      },
+      startDate: {
+        value: undefined,
+      },
+      endDate: {
+        value: undefined,
+      },
+      responsibilities: {
+        value: undefined,
+      },
     },
-    email: {
-      value: undefined,
+    educationCertifications: {
+      degree: {
+        value: undefined,
+      },
+      institution: {
+        value: undefined,
+      },
+      graduationDate: {
+        value: undefined,
+      },
+      achievements: {
+        value: undefined,
+      },
     },
-    linkedInProfile: {
-      value: undefined,
+    skills: {
+      skill: {
+        value: undefined,
+      },
     },
-    portfolio: {
-      value: undefined,
-    },
-  },
-  professionalSummary: {
-    summary: {
-      value: undefined,
-    },
-  },
-  workExperience: {
-    jobTitle: {
-      value: undefined,
-    },
-    companyName: {
-      value: undefined,
-    },
-    location: {
-      value: undefined,
-    },
-    startDate: {
-      value: undefined,
-    },
-    endDate: {
-      value: undefined,
-    },
-    responsibilities: {
-      value: undefined,
-    },
-  },
-  educationCertifications: {
-    degree: {
-      value: undefined,
-    },
-    institution: {
-      value: undefined,
-    },
-    graduationDate: {
-      value: undefined,
-    },
-    achievements: {
-      value: undefined,
-    },
-  },
-  skills: {
-    skill: {
-      value: undefined,
-    },
-  },
-};
+  };
+}
 
 export default function InputSetup(props) {
-  const [tempData, setTempData] = useState(initialState);
+  const [tempData, setTempData] = useState(getDataSkeleton());
+  const [mainData, setMainData] = useState(getDataSkeleton());
 
   const fieldList = inputStructure[props.section].fields;
   const keys = Object.keys(fieldList).map((key) => key);
@@ -89,10 +92,10 @@ export default function InputSetup(props) {
                 const inputData = e.target.value;
                 let temp = tempData;
                 temp[props.section][fieldName].value = inputData;
-                console.log(tempData);
+                console.log(tempData[props.section], mainData[props.section]);
                 setTempData(temp);
               }}
-              value={tempData[props.section][Object.keys(fieldList)[i]].value}
+              value={mainData[props.section][Object.keys(fieldList)[i]].value}
             ></input>
           </div>
         ))}
