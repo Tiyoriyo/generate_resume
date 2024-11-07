@@ -14,7 +14,7 @@ export default function Container() {
   ];
 
   return (
-    <div className="flex flex-col items-start justify-center gap-4">
+    <div className="flex flex-col items-start justify-center gap-8">
       <InputSetup
         section={sections[CurrentSection]}
         setSectionHandler={setCurrentSection}
