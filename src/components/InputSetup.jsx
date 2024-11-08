@@ -78,6 +78,8 @@ export default function InputSetup(props) {
   const fieldList = inputStructure[props.section].fields;
   const keys = Object.keys(fieldList).map((key) => key);
 
+  console.log(tempData[props.section][Object.keys(tempData[props.section])[0]]);
+
   return (
     <div className="flex w-full flex-col gap-4 border p-8 shadow-md">
       <div className="flex flex-col gap-2">
@@ -92,10 +94,9 @@ export default function InputSetup(props) {
                 const inputData = e.target.value;
                 let temp = tempData;
                 temp[props.section][fieldName].value = inputData;
-                console.log(tempData[props.section], mainData[props.section]);
-                setTempData(temp);
+                setTempData(Object.create(temp));
               }}
-              value={mainData[props.section][Object.keys(fieldList)[i]].value}
+              value={tempData[props.section][Object.keys(fieldList)[i]].value}
             ></input>
           </div>
         ))}
@@ -105,9 +106,8 @@ export default function InputSetup(props) {
           className="w-16 border bg-green-300"
           onClick={() => {
             if (props.sectionIndex < 4) {
-              data[props.section] = props.setSectionHandler(
-                props.sectionIndex + 1,
-              );
+              setMainData(tempData);
+              props.setSectionHandler(props.sectionIndex + 1);
             }
           }}
         >
