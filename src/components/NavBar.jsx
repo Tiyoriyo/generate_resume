@@ -20,7 +20,9 @@ export default function NavBar(props) {
       title={sections[number]}
       key={rawSections[number]}
       index={number}
-      onClick={() => props.navigateFunc(number)}
+      onClick={() => {
+        props.navigateFunc(number);
+      }}
       active={props.curNumber === number ? true : false}
     ></NavButton>
   ));

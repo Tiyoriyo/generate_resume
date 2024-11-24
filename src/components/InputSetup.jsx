@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { inputStructure } from "../assets/inputStructure";
-import { data } from "../assets/dataHolder";
 
 function getDataSkeleton() {
   return {
@@ -72,43 +71,75 @@ function getDataSkeleton() {
 }
 
 export default function InputSetup(props) {
-  const [tempData, setTempData] = useState(getDataSkeleton());
-  const [mainData, setMainData] = useState(getDataSkeleton());
+  const initialDataSkeleton1 = getDataSkeleton();
+  const initialDataSkeleton2 = getDataSkeleton();
 
-  const fieldList = inputStructure[props.section].fields;
-  const keys = Object.keys(fieldList).map((key) => key);
+  const [curTempState, setCurTempState] = useState(initialDataSkeleton1);
+  const [prevTempState, setPrevTempState] = useState(initialDataSkeleton2);
 
-  console.log(tempData[props.section][Object.keys(tempData[props.section])[0]]);
+  const [mainData, setMainData] = useState(undefined);
+  const [firstTimeInput, setFirstTimeInput] = useState(true);
+
+  const section = props.section;
+  const sectionIndex = props.sectionIndex;
+  const setSectionHandler = props.setSectionHandler;
+
+  const fieldList = inputStructure[section].fields;
+  const keys = Object.keys(fieldList);
+
+  function sdf() {
+    if (firstTimeInput && mainData) {
+      setFirstTimeInput(false);
+      console.log("a");
+      return mainData;
+    } else {
+      console.log("b");
+      return curTempState;
+    }
+  }
+
+  // console.log(mainData[section]);
 
   return (
     <div className="flex w-full flex-col gap-4 border p-8 shadow-md">
       <div className="flex flex-col gap-2">
-        {keys.map((field, i) => (
-          <div className="flex w-full flex-col" key={field}>
-            <label>{fieldList[field].label}</label>
-            <input
-              type={fieldList[field].type}
-              className="h-8 border shadow-sm"
-              onChange={(e) => {
-                const fieldName = Object.keys(fieldList)[i];
-                const inputData = e.target.value;
-                let temp = tempData;
-                temp[props.section][fieldName].value = inputData;
-                setTempData(Object.create(temp));
-              }}
-              value={tempData[props.section][Object.keys(fieldList)[i]].value}
-            ></input>
-          </div>
-        ))}
+        {keys.map((field, i) => {
+          const data = fieldList[field];
+          return (
+            <div className="flex w-full flex-col" key={field}>
+              <label>{data.label}</label>
+              <input
+                type={data.type}
+                className="h-8 border shadow-sm"
+                onChange={(e) => {
+                  if (firstTimeInput) setFirstTimeInput(false);
+
+                  if (!firstTimeInput) {
+                    const newPrevTempState = curTempState;
+                    setPrevTempState(newPrevTempState); // Set Old Input to previous temp state
+                    console.log("works", prevTempState[section]);
+                  }
+
+                  const newFieldObj = curTempState; // Create new workstate object
+                  const input = e.target.value; // Retrieve Input Value
+                  newFieldObj[section][field] = input; // Add new input to workstate object
+                  setCurTempState(newFieldObj); // Set workstate obj to current tempstate obj
+                  console.log(curTempState[section]);
+                }}
+                value={sdf()[section][field].value}
+              ></input>
+            </div>
+          );
+        })}
       </div>
       <div className="flex gap-2">
         <button
           className="w-16 border bg-green-300"
           onClick={() => {
-            if (props.sectionIndex < 4) {
-              setMainData(tempData);
-              props.setSectionHandler(props.sectionIndex + 1);
+            if (sectionIndex < 4) {
+              setSectionHandler(sectionIndex + 1);
             }
+            setMainData(curTempState);
           }}
         >
           Submit
